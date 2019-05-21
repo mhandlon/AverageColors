@@ -240,6 +240,43 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/imagemagick/7.0.8-46/include/ImageMagick-7";
+				OTHER_LDFLAGS = (
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-I/usr/local/Cellar/imagemagick/7.0.8-46/include/ImageMagick-7",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-I/usr/local/Cellar/imagemagick/7.0.8-46/include/ImageMagick-7",
+					"-L/usr/local/Cellar/imagemagick/7.0.8-46/lib",
+					"-lMagick++-7.Q16HDRI",
+					"-lMagickWand-7.Q16HDRI",
+					"-lMagickCore-7.Q16HDRI",
+					"-L/usr/local/Cellar/imagemagick/7.0.8-46/lib",
+					"-lMagick++-7.Q16HDRI",
+					"-lMagickWand-7.Q16HDRI",
+					"-lMagickCore-7.Q16HDRI",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -248,6 +285,43 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/imagemagick/7.0.8-46/include/ImageMagick-7";
+				OTHER_LDFLAGS = (
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-I/usr/local/Cellar/imagemagick/7.0.8-46/include/ImageMagick-7",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-Xpreprocessor",
+					"-fopenmp",
+					"-DMAGICKCORE_HDRI_ENABLE=1",
+					"-DMAGICKCORE_QUANTUM_DEPTH=16",
+					"-I/usr/local/Cellar/imagemagick/7.0.8-46/include/ImageMagick-7",
+					"-L/usr/local/Cellar/imagemagick/7.0.8-46/lib",
+					"-lMagick++-7.Q16HDRI",
+					"-lMagickWand-7.Q16HDRI",
+					"-lMagickCore-7.Q16HDRI",
+					"-L/usr/local/Cellar/imagemagick/7.0.8-46/lib",
+					"-lMagick++-7.Q16HDRI",
+					"-lMagickWand-7.Q16HDRI",
+					"-lMagickCore-7.Q16HDRI",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

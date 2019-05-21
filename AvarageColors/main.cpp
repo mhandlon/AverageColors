@@ -7,8 +7,31 @@
 //
 
 #include <iostream>
+#include <Magick++.h>
 
-int main(int argc, const char * argv[]) {
+using namespace Magick;
+
+int main(int argc, const char **argv) {
+    
+    InitializeMagick(*argv);
+    
+    Image image;
+    try {
+        // Read a file into image object
+        image.read( "girl.gif" );
+        
+        // Crop the image to specified size (width, height, xOffset, yOffset)
+        image.crop( Geometry(100,100, 100, 100) );
+        
+        // Write the image to a file
+        image.write( "x.gif" );
+    }
+    catch( Exception &error_ )
+    {
+        cout << "Caught exception: " << error_.what() << endl;
+        return 1;
+    }
+    
     // insert code here...
     std::cout << "Hello, World!\n";
     return 0;
