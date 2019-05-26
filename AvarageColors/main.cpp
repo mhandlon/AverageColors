@@ -14,6 +14,8 @@
 #include <cmath>
 #include <Magick++.h>
 
+//#define MAGICKCORE_QUANTUM_DEPTH 8
+
 using namespace std;
 using namespace Magick;
 
@@ -85,26 +87,28 @@ RGB getAverageRGBCircle(Image img, int x, int y, int radius)
              */
             
             // If the pixel is outside the circle, skip it
-            if (distance(x, y, i, j) > r){
-                //std::cout << "distamce: " << distance(x, y, i, j) << std::endl;
+            if (distance(x, y, i, j) > radius){
+                //std::cout << "[Out of Range] (" << x << ", " << y << ") (" << x << ", " << y << ") " << distance(x, y, i, j) << std::endl;
                 continue;
             }
+            //std::cout << "[OK] (" << x << ", " << y << " (" << x << ", " << y << ") " << distance(x, y, i, j) << std::endl;
             
             ColorRGB c = img.pixelColor(i, j);
             
             // Get the color from the image, add to a running sum
-            r += c.red() * c.red();
-            g += c.green() * c.green();
-            b += c.blue() * c.green();
+            r += (c.red()*255) * (c.red()*255);
+            g += (c.green()*255) * (c.green()*255);
+            b += (c.blue()*255) * (c.green()*255);
+            
             ++num;
         }
     }
     
-    cout << num << endl;
+    //cout << "[COUNT] " << num << endl;
 
-    average.red = sqrt(r/num);
-    average.green = sqrt(g/num);
-    average.blue = sqrt(b/num);
+    average.red = round(sqrt(r/num));
+    average.green = round(sqrt(g/num));
+    average.blue = round(sqrt(b/num));
     
     return average;
    }
@@ -124,23 +128,20 @@ int main(int argc, const char **argv)
         cout << "Image height: " << height << endl;
         cout << "Image channels: " << image.channels() << endl;
         
+        /*
         int cnt = 0;
         for ( int row = 0; row <= height; row++ )
         {
             for ( int column = 0; column <= width; column++ )
             {
-                if (cnt == 513){
-                    break;
-                }
                 ++cnt;
                 ColorRGB px = image.pixelColor( column, row );
                 std::cout << "(" << row << "," << column << ") R: " << px.red() << " G: " << px.green() << " B: " << px.blue() << std::endl;
             }
         }
-        
         std::cout << "cnt: " << cnt << std::endl;
-        return 1;
-         //image.modifyImage();
+        */
+        //image.modifyImage();
         
         int n_px = 0;
         vector<circle> points;
@@ -158,7 +159,7 @@ int main(int argc, const char **argv)
                     mycircle.x = row;
                     mycircle.y = column;
                     mycircle.color = px;
-                    cout << "After (x:" << mycircle.x << ", y:" << mycircle.y << ") " << mycircle.color << endl;
+                    //cout << "(x:" << mycircle.x << ", y:" << mycircle.y << ") " << mycircle.color << endl;
                     points.push_back(mycircle);
                 }
             }
@@ -178,8 +179,8 @@ int main(int argc, const char **argv)
         
         ofstream outFile("me.js");
         
-        //for( std::vector<circle>::const_iterator i = points.begin(); i != points.end(); ++i)
-            //cout << "(" << *i << "}," << endl;
+        for( std::vector<circle>::const_iterator i = points.begin(); i != points.end(); ++i)
+            outFile << "(" << *i << "}," << endl;
          
     } catch( Magick::Exception & error ) {
         cerr << "Caught Magick++ exception: " << error.what() << endl;
