@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		A7EACE4E2294B13400C9FDB2 /* AvarageColors */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AvarageColors; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7EACE512294B13400C9FDB2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A7EACE582294B75800C9FDB2 /* github.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = github.jpg; sourceTree = "<group>"; };
+		A7EACE592294ED5200C9FDB2 /* 512-github.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "512-github.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				A7EACE512294B13400C9FDB2 /* main.cpp */,
+				A7EACE582294B75800C9FDB2 /* github.jpg */,
+				A7EACE592294ED5200C9FDB2 /* 512-github.jpg */,
 			);
 			path = AvarageColors;
 			sourceTree = "<group>";
