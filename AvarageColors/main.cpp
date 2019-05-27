@@ -180,7 +180,7 @@ int main(int argc, const char **argv)
         ofstream outFile("me.js");
         
         for( std::vector<circle>::const_iterator i = points.begin(); i != points.end(); ++i)
-            outFile << "(" << *i << "}," << endl;
+            outFile << "{" << *i << "}," << endl;
          
     } catch( Magick::Exception & error ) {
         cerr << "Caught Magick++ exception: " << error.what() << endl;
