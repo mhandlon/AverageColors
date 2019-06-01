@@ -26,7 +26,7 @@ struct RGB
     float blue;
     friend ostream& operator<< (ostream &o, const RGB &i)
     {
-        return o << "c:\"" << i.red << "|" << i.green << "|" << i.blue << "\"";
+        return o << ",c:\"" << i.red << "|" << i.green << "|" << i.blue << "\"";
     }
 };
 
@@ -34,10 +34,12 @@ struct circle
 {
     int x;
     int y;
+    int t;
+    int l;
     RGB color;
     friend ostream& operator<< (ostream &o, const circle &i)
     {
-        return o << "x:" << i.x << ",y:" << i.y << "," << i.color;
+        return o << "x:" << i.x << ",y:" << i.y << ",t:" << i.t << ",l:" << i.l << i.color;
     }
 };
 
@@ -151,6 +153,7 @@ int main(int argc, const char **argv)
             {
                 if (((column + 6) <= height) && (((row + 6) <= width))){
                     ++n_px;
+                    
                     //std::cout << "pixel: " << n_px << std::endl;
                     RGB px = getAverageRGBCircle(image, row, column, 5);
                     //std::cout << " 12/12: r: " << px.red() << " g: " << px.green() << " b: " << px.blue() << std::endl;
@@ -158,6 +161,19 @@ int main(int argc, const char **argv)
                     circle mycircle;
                     mycircle.x = row;
                     mycircle.y = column;
+                    
+                    if (row == 6){
+                        mycircle.l = 12;
+                    } else {
+                        mycircle.l = ((row+6)/12)*12;
+                    }
+                    
+                    if (column == 6){
+                        mycircle.t = 12;
+                    } else {
+                        mycircle.t = ((column+6)/12)*12;
+                    }
+                
                     mycircle.color = px;
                     //cout << "(x:" << mycircle.x << ", y:" << mycircle.y << ") " << mycircle.color << endl;
                     points.push_back(mycircle);
@@ -179,8 +195,11 @@ int main(int argc, const char **argv)
         
         ofstream outFile("me.js");
         
-        for( std::vector<circle>::const_iterator i = points.begin(); i != points.end(); ++i)
+        for( std::vector<circle>::const_iterator i = points.begin(); i != points.end(); ++i){
+            cout << "{" << *i << "}," << endl;
             outFile << "{" << *i << "}," << endl;
+        }
+        
          
     } catch( Magick::Exception & error ) {
         cerr << "Caught Magick++ exception: " << error.what() << endl;
