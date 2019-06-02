@@ -194,7 +194,11 @@ int main(int argc, const char **argv)
         */
         
         ofstream outFile("me.js");
-        cout << "var me = [" << endl;
+        
+        string mytext = "var me = [";
+        outFile << mytext << endl;
+        cout << mytext << endl;
+        
         bool first = true;
         
         for( std::vector<circle>::const_iterator i = points.begin(); i != points.end(); ++i){
@@ -209,7 +213,7 @@ int main(int argc, const char **argv)
         }
         
         cout << endl << "];" << endl;
-        outFile << "]" << endl;
+        outFile << "];" << endl;
         
     } catch( Magick::Exception & error ) {
         cerr << "Caught Magick++ exception: " << error.what() << endl;
