@@ -194,13 +194,23 @@ int main(int argc, const char **argv)
         */
         
         ofstream outFile("me.js");
+        cout << "var me = [" << endl;
+        bool first = true;
         
         for( std::vector<circle>::const_iterator i = points.begin(); i != points.end(); ++i){
-            cout << "{" << *i << "}," << endl;
-            outFile << "{" << *i << "}," << endl;
+            if (first){
+                cout << "\t{" << *i << "}";
+                outFile << "\t{" << *i << "}";
+                first = false;
+            } else {
+                cout << "," << endl << "\t{" << *i << "}";
+                outFile << "," << endl << "\t{" << *i << "}";
+            }
         }
         
-         
+        cout << endl << "];" << endl;
+        outFile << "]" << endl;
+        
     } catch( Magick::Exception & error ) {
         cerr << "Caught Magick++ exception: " << error.what() << endl;
         return 1;
